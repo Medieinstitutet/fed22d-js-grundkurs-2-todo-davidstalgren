@@ -1,24 +1,81 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="/js-template/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt</title>
-    <script type="module" crossorigin src="/js-template/assets/index.288365a0.js"></script>
-    <link rel="stylesheet" href="/js-template/assets/index.09951560.css">
-  </head>
-  <body>
-    <main>
-      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
-      <!-- TODO: skriv din kod här, innan script-taggen -->
-    </main>
+<html lang="en">
 
-    <!-- TODO
-    - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
-    - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
-    - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
-    -->
-    
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-todo-davidstalgren/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DavvEDavvE needs TODO</title>
+  <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-davidstalgren/assets/index.e60c06dd.js"></script>
+  <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-davidstalgren/assets/index.66f09516.css">
+</head>
+
+<body>
+  <main>
+
+    <header class="header">
+      <h1 class="header-todo">TODO</h1>
+      <div class="todays-date">
+        <span class="header-date" id="headerDate"></span>
+        <span class="header-week" id="headerWeek"></span>
+      </div>
+    </header>
+
+    <section>
+      <div class="input-new-todo">
+        <form>
+          <label for="addTodoInput">New TODO:</label><input type="text" class="add-todo-input" id="addTodoInput" placeholder="Add new TODO..."><br>
+          <label for="addTodoInputDate">Due date:</label><input type="date" class="add-todo-input-date" id="addTodoInputDate" placeholder="Add new TODO...">
+          <button type="submit" class="add-todo-btn" id="add-todo-btn">Add</button>
+        </form>
+      </div>
+    </section>
+    <section>
+      <div class="todo-wrapper">
+        <ul>
+          <li class="todo-task">Do laundry
+            <div class="icons-duedate">
+              <div>
+                <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <span>Due Date</span>
+            </div>
+          </li>
+          <li class="todo-task">Get groceries
+            <div class="icons-duedate">
+              <div>
+                <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <span>Due Date</span>
+            </div>
+          </li>
+          <li class="todo-task">Dress as Santa
+            <div class="icons-duedate">
+              <div>
+                <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <span>Due Date</span>
+            </div>
+          </li>
+          <li class="todo-task">Put up decorations
+            <div class="icons-duedate">
+              <div>
+                <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <span>Due Date</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  
+</body>
+
 </html>
