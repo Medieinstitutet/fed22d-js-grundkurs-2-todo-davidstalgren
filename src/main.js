@@ -34,7 +34,7 @@ const todoInputDueDate = document.querySelector('.todo-input-date');
 
 
 const todoItemsList = document.querySelector('.todo-items');
-const todoItemsLi = document.querySelector('#item');
+let todoItemsLi = document.querySelector('.item');
 
 let todos = [];
 
@@ -103,13 +103,19 @@ function renderTodos(todos) {
           <div class="icons-duedate">
             <div>
               <input class="checkbox" type="checkbox" ${checked}>
-              <button class="delete-button"><i class="fa-solid fa-trash-can trashcan"></i></button>
+              <button class="delete-button" data-id="${item.id}"><i class="fa-solid fa-trash-can trashcan"></i></button>
             </div>
             <span>Over Due Date</span>
           </div>
       `;
     todoItemsList.append(li); // append the li element to the ul
   });
+  todoItemsLi = document.querySelectorAll('.item');
+  todoItemsLi.forEach(todo => {
+    const delBtn = todo.querySelector('.delete-button');
+    delBtn.addEventListener('click', removeTodo);
+  });
+  console.log(todoItemsLi);
 }
 
 //*****************************************************************************************
@@ -144,11 +150,12 @@ function getLocalStorage() {
   toLocalStorage(todos);
 }
  */
-function removeTodo(id) {
-  todos = todos.filter(function(item) {
-    return item.id != id;
-  });
+function removeTodo(e) {
+  const deleteId = Number(e.currentTarget.dataset.id);
+  const indexOfDeletedTodo = todos.findIndex(todo => todo.id === deleteId);
+  todos.splice(indexOfDeletedTodo, 1);
   toLocalStorage(todos);
+  renderTodos(todos);
 }
 
 
@@ -162,12 +169,12 @@ function removeTodo(id) {
 
   // check if target clicked is a delete button, run function removeTodo to remove correct todo
 
-console.log(todoItemsList)
-todoItemsList.addEventListener('click', removeGetId);
+console.log(todoItemsLi)
+todoItemsLi.addEventListener('click', removeGetId);
 
 function removeGetId(e) {
 
-console.log(e.currentTarget)
+  console.log(e.currentTarget);
   if (e.currentTarget.classList.contains('delete-button')) {     
     const checkDeleteBtn = e.currentTarget.closest('data-key');
     const getRemoveId = checkDeleteBtn.getAttribute('data-key');
