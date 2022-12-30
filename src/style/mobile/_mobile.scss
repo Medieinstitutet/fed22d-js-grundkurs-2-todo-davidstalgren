@@ -1,0 +1,280 @@
+/* * {
+  outline: 1px solid #f00 !important; // Turn on to see layout and overflowing containers better
+} */
+
+/*******************************************************************************
+***************************************Variables********************************
+*******************************************************************************/
+
+$font-regular: rgb(200 200 200);
+$font-dark: black;
+$inputbg: rgb(200 200 200);
+$inputborder: rgb(121 121 121);
+$checkbox-checkmark: rgb(146 146 146);
+$overdue-box-shadow: red;
+$just-in-time-box-shadow: rgb(255 136 0);
+$regular-box-shadow: rgb(117 117 117);
+$todo-bg: #2d2d2d;
+$completed-todo-bg: #606060;
+
+/******************************************************************************
+***************************************Styling**********************************
+*******************************************************************************/
+
+body {
+    font-family: Montserrat, sans-serif;
+    background-image: linear-gradient(#22333d, #000);
+    color: $font-regular;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-and-form-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 3.5rem;
+
+    .todays-date{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: $todo-bg;
+    max-width: 25rem;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid $regular-box-shadow;
+    box-shadow: 2px 2px 5px $regular-box-shadow;
+ 
+    .todo-input{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $inputbg;
+        border: 1px solid $inputborder;
+        color: $font-dark;
+        border-radius: 5px;
+        width: 100%;
+        height: 2rem;
+    }
+
+    .todo-input-date{
+        background-color: $inputbg;
+        border: 1px solid $inputborder;
+        color: $font-dark;
+        border-radius: 5px;
+        width: 100%;
+        height: 2rem;
+    }
+
+    .add-button{
+        position: relative;
+        left: 70px;
+        margin-top: 10px;
+        width: 10rem;
+        background-color: $inputbg;
+        border: 2px solid $inputborder;
+        font-size: 1rem;
+        padding: 6px;
+        border-radius: 5px;
+        color: $font-dark;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+    }
+
+    .add-button:hover{
+        background-color: $checkbox-checkmark;
+        border: 2px solid $todo-bg;
+    }
+}
+
+.sortdropdown-wrapper{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: stretch;
+}
+
+.todo-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 500px;
+    background-color: $todo-bg;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 5px rgb(117 117 117);
+
+    &.justintime{
+        border: 1px solid $just-in-time-box-shadow;
+        box-shadow: 2px 2px 5px $just-in-time-box-shadow;
+    }
+
+    &.overdue{
+        border: 1px solid $overdue-box-shadow;
+        box-shadow: 2px 2px 5px $overdue-box-shadow;
+    }
+
+    &.checked{
+        text-decoration: line-through;
+        background-color: $completed-todo-bg;
+    }
+
+    .item-category{
+        font-size: 2rem;
+    }
+
+    .todo-text{
+        max-inline-size: 12rem;
+        word-wrap: normal;
+        padding: 5px;
+    }
+
+    .icons-duedate{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .due-date-text{
+        text-align: right;
+        width: 6rem;
+    }
+
+    .icons{
+        display: flex;
+        gap: 10px;
+    }
+
+    .delete-button{
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        border: none;
+        font-size: 2rem;
+        color: $font-regular;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .trashcan{
+        position: relative;
+        bottom: 8px;
+    }
+}
+
+/*******************************************************************************
+This below is custom checkbox styling found on https://moderncss.dev/ 
+*******************************************************************************/
+
+.checkbox{
+    font-family: system-ui, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: $inputbg;
+    margin: 0;
+    font: inherit;
+    color: rgb(184 184 184);
+    width: 2rem;
+    height: 2rem;
+    border: 0.15em solid $inputborder;
+    border-radius: 0.1em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: relative;
+    width: 1.0rem;
+    height: 1.3rem;
+    transform: scale(0);
+    transition: 0.3s transform ease-in-out;
+    box-shadow: inset 1rem 1rem $checkbox-checkmark;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+  
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+/*****************************************************************************************
+This below is custom dropdown menu styling found on https://codepen.io/raubaca/pen/bGWmZje 
+*****************************************************************************************/
+
+$glass: rgba(255 255 255 /20%);
+$glass-icon: rgba(255 255 255 /30%);
+
+.sort-dropdown-custom{
+    appearance: none;
+    font: inherit;
+    width: 14rem;
+    height: 2rem;
+    padding: 0 4em 0 1em;
+    background: url("/public/svg/Caret_down_font_awesome_whitevariation.svg")
+      no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, $glass-icon 3em, $glass 3em);
+    color: $font-regular;
+    border: 1px solid $inputborder;
+    border-radius: 5px;
+    box-shadow: 0 0 1em 0 rgba(0 0 0 /20%);
+    cursor: pointer;
+
+    option {
+        color: inherit;
+        background-color: $todo-bg;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+}
